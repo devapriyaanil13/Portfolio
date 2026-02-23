@@ -1,0 +1,127 @@
+body {
+    background: #050505;
+    color: white;
+    font-family: Poppins;
+}
+
+
+.darknav {
+    background: rgba(0,0,0,0.85) !important;
+    border-bottom: 1px solid #0ff;
+    backdrop-filter: blur(10px);
+}
+.nav-link.active {
+    color: #0ff !important;           
+                  
+    font-weight: 600;
+}
+
+.neon {
+    color: #0ff !important;
+    font-family:Poppins;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+
+.neontitle {
+    font-family: Poppins;
+    color: #0ff;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 0 0 12px #0ff;
+}
+
+
+
+.skillrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background: rgba(20,20,20,0.5);
+    border: 1px solid #0ff;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 18px rgba(0,255,255,0.15);
+    transition: 0.4s;
+}
+
+.skillrow:hover {
+    transform: translateX(8px);
+    box-shadow: 0 0 30px #0ff;
+}
+
+
+.iconimg {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #000;
+    padding: 10px;
+    border: 2px solid #0ff;
+    box-shadow: 0 0 12px #0ff;
+}
+
+.skillinfo h3 {
+    font-family: Orbitron;
+    color: #0ff;
+}
+
+.skillinfo p {
+    color: #ccc;
+    margin-bottom: 6px;
+}
+
+.footer {
+    background: #000;
+    padding: 20px 10px;   /* 🔹 reduced space */
+    margin-top: 40px;
+    border-top: 1px solid #0ff;
+    position: relative;   /* needed for neon line */
+}
+
+.footer-tag {
+    color: #ccc;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.footer-social a {
+    color: #0ff;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: 0.3s;
+    text-shadow: 0 0 6px #0ff;
+}
+
+.footer-social a:hover {
+    color: #fff;
+    text-shadow: 0 0 15px #0ff;
+    transform: scale(1.15);
+}
+
+.footer-copy {
+    margin-top: 12px;
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+
+@media (max-width: 768px) {
+    .skillrow {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .iconimg {
+        margin: 0 auto;
+        width: 150px;
+        height: 150px;
+    }
+
+    .skillinfo {
+        text-align: center;
+    }
+}

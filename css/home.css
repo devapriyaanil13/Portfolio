@@ -1,0 +1,106 @@
+body {
+    background: #050505;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.darknav {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #0ff;
+}
+
+.nav-link {
+    color: #bbb !important;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.nav-link:hover, .active {
+    color: #0ff !important;
+    text-shadow: 0 0 8px #0ff;
+}
+
+
+.neon {
+    font-family: 'Orbitron', sans-serif;
+    color: #0ff !important;
+    text-shadow: 0 0 10px #0ff;
+}
+
+.hero {
+
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+.heroimg {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    border: 3px solid #0ff;
+    box-shadow: 0 0 20px #0ff;
+    margin-bottom: 25px;
+}
+
+.neontext {
+    font-family: 'Orbitron', sans-serif;
+    color: #0ff;
+    text-shadow: 0 0 12px #0ff;
+    font-size: 40px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #aaa;
+}
+
+.neonbtn {
+    border: 1px solid #0ff;
+    color: #0ff;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.neonbtn:hover {
+    background: #0ff;
+    color: black;
+    box-shadow: 0 0 20px #0ff;
+}
+
+.footer {
+    background: #000;
+    padding: 20px 10px;   
+    margin-top: 40px;
+    border-top: 1px solid #0ff;
+    position: relative;   
+}
+
+.footer-tag {
+    color: #ccc;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.footer-social a {
+    color: #0ff;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: 0.3s;
+    text-shadow: 0 0 6px #0ff;
+}
+
+.footer-social a:hover {
+    color: #fff;
+    text-shadow: 0 0 15px #0ff;
+    transform: scale(1.15);
+}
+
+.footer-copy {
+    margin-top: 12px;
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 1px;
+}

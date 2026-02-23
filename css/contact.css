@@ -1,0 +1,146 @@
+body {
+    background: #050505;
+    color: white;
+    font-family: Poppins;
+}
+
+.darknav {
+    background: rgba(0,0,0,0.85) !important;
+    border-bottom: 1px solid #0ff;
+    backdrop-filter: blur(10px);
+}
+
+.neon {
+    color: #0ff !important;
+    font-family: Orbitron;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+.neontitle {
+    font-family: Orbitron;
+    color: #0ff;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 0 0 12px #0ff;
+}
+
+.formwrapper {
+    background: rgba(20,20,20,0.4);
+    border: 1px solid #0ff;
+    padding: 35px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 0 25px rgba(0,255,255,0.2);
+    backdrop-filter: blur(10px);
+}
+.formtitle {
+    text-align: center;
+    font-family: Orbitron;
+    color: #0ff;
+    text-shadow: 0 0 12px #0ff;
+    margin-bottom: 25px;
+}
+.inputbox {
+    width: 70%;
+    margin: auto;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.inputbox input,
+.inputbox textarea {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid #0ff;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.inputbox textarea {
+    height: 140px;
+    resize: none;
+}
+
+.inputbox label {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    color: #aaa;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.inputbox input:focus + label,
+.inputbox input:not(:placeholder-shown) + label,
+.inputbox textarea:focus + label,
+.inputbox textarea:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    background: #050505;
+    padding: 0px 5px;
+    font-size: 13px;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff;
+}
+
+.neonbutton {
+    border: 1px solid #0ff;
+    color: #0ff !important;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
+    background: transparent;
+    transition: 0.3s;
+    box-shadow: none !important;
+}
+
+.neonbutton:hover {
+    background: #0ff;
+    color: black !important;
+    transform: scale(1.02);
+    box-shadow: none !important;
+}
+
+.footer {
+    background: #000;
+    padding: 20px 10px; 
+    margin-top: 40px;
+    border-top: 1px solid #0ff;
+    position: relative;   
+}
+
+.footer-tag {
+    color: #ccc;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.footer-social a {
+    color: #0ff;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: 0.3s;
+    text-shadow: 0 0 6px #0ff;
+}
+
+.footer-social a:hover {
+    color: #fff;
+    text-shadow: 0 0 15px #0ff;
+    transform: scale(1.15);
+}
+
+.footer-copy {
+    margin-top: 12px;
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.nav-link.active {
+    color: #0ff !important;           
+                  
+    font-weight: 600;
+}
