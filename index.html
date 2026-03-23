@@ -1,62 +1,546 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Devapriya | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devapriya Anil | Portfolio</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-     <link rel="stylesheet" href="css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        /* Specific page styles consolidated */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+        }
+        @media (max-width: 991px) {
+            .about-layout { grid-template-columns: 1fr; }
+        }
+        .profile-img-container {
+            text-align: center;
+            position: sticky;
+            top: 100px;
+        }
+        .profile-img-container img {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 2px solid var(--glass-border);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+        .profile-img-container img:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-1);
+        }
+        .skill-pill {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 0.5rem 1.25rem;
+            margin: 0.4rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+        .skill-pill:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--accent-1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.2);
+            color: #fff;
+        }
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--accent-1);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px var(--neon-glow);
+        }
+        .project-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--accent-1);
+            margin-bottom: 0.2rem;
+        }
+        .project-type {
+            font-size: 0.9rem;
+            color: var(--accent-2);
+            font-weight: 500;
+        }
+        .project-date {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .project-link {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            margin-left: 10px;
+            transition: color 0.3s;
+        }
+        .project-link:hover {
+            color: var(--accent-1);
+        }
+        .project-desc {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+        .training-card {
+            border-left: 4px solid var(--accent-2);
+        }
+        .contact-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            height: 100%;
+            transition: transform 0.3s;
+        }
+        .contact-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255,255,255,0.15);
+        }
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent-1);
+            margin-bottom: 1rem;
+            display: inline-block;
+            text-shadow: 0 0 10px var(--neon-glow);
+        }
+        .contact-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-all;
+            transition: color 0.3s;
+        }
+        .contact-link:hover {
+            color: var(--accent-1);
+        }
+        .form-control {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            padding: 0.8rem 1rem;
+        }
+        .form-control:focus {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--accent-1);
+            color: var(--text-main);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+    </style>
 </head>
 
 <body>
-
-<nav class="navbar navbar-dark navbar-expand-lg sticky-top darknav">
+<nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-        <a class="navbar-brand neon" href="index.html">Devapriya</a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navmenu">
+        <a class="navbar-brand" href="#home">Devapriya Anil</a>
+        <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse ms-auto" id="navmenu">
             <div class="navbar-nav ms-auto">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="skills.html" class="nav-link">Skills</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
         </div>
     </div>
 </nav>
 
-<div class="hero container text-center">
-    <img src="assets/photo.jpg" class="heroimg">
-    <h1 class="neontext">I'm Devapriya Anil</h1>
-    <p class="subtitle">Software Developer • Data Analyst • ML Enthusiast</p>
-    <a href="about.html" class="btn neonbtn mt-3">Explore More</a>
-</div>
+<!-- HERO SECTION -->
+<section id="home" class="hero container">
+    <img src="assets/photo.jpg" class="heroimg" alt="Devapriya Anil">
+    <h1 class="text-gradient">I'm Devapriya Anil</h1>
+    <p class="subtitle">Software Developer • Problem Solver • Tech Enthusiast</p>
+    <div class="d-flex gap-3 mt-2">
+        <a href="#projects" class="btn btn-neon">View Projects</a>
+        <a href="assets/ShopdeckCV.pdf" target="_blank" class="btn btn-outline-neon"><i class="bi bi-file-earmark-person"></i> View CV</a>
+    </div>
+</section>
 
-
-<footer class="footer">
-    <div class="container text-center">
-
-        <p class="footer-tag">Building Modern Web Experiences</p>
-
-        <div class="footer-social">
-            <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
-            <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-            <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-            <a href="#" target="_blank"><i class="bi bi-envelope-fill"></i></a>
+<!-- ABOUT SECTION -->
+<section id="about" class="container">
+    <div class="about-layout">
+        <!-- Left Panel -->
+        <div class="profile-img-container">
+            <img src="assets/photo.jpg" alt="Devapriya Anil">
+            <h3 class="text-gradient mb-1">Devapriya Anil</h3>
+            <p class="text-muted">Software Developer | ML Enthusiast</p>
+            <div class="d-flex justify-content-center gap-2 mt-3">
+                <a href="https://github.com/devapriyaanil13" target="_blank" class="btn btn-outline-neon btn-sm"><i class="bi bi-github"></i></a>
+                <a href="https://www.linkedin.com/in/devapriya-anil/" target="_blank" class="btn btn-outline-neon btn-sm"><i class="bi bi-linkedin"></i></a>
+            </div>
         </div>
 
-        <p class="footer-copy">© 2026 — All Rights Reserved</p>
+        <!-- Right Panel -->
+        <div>
+            <h2 class="section-title text-gradient">About Me</h2>
+            <div class="glass-panel mb-5">
+                <p style="line-height: 1.8;">
+                    I am a passionate software developer exploring the realms of web development, data analysis, and machine learning. 
+                    I enjoy building robust, user-centric full-stack applications and integrating intelligent features utilizing predictive modeling. 
+                    Currently, I'm pursuing my B.Tech in Computer Science and Engineering, continuously expanding my toolkit to solve complex real-world problems.
+                </p>
+            </div>
 
+            <h3 class="section-title text-gradient">Internship</h3>
+            <div class="timeline">
+                <div class="tcard">
+                    <div class="tcard-header">
+                        <h4>Software Engineer Intern</h4>
+                        <span class="date-badge">Jun '25 – Aug '25</span>
+                    </div>
+                    <p><strong>Zerone Consulting</strong></p>
+                    <ul>
+                        <li>Developed a full-stack hotel reservation analytics platform using React and Node.js, building 10+ dynamic UI components and managing 1,500+ booking records through optimized backend services.</li>
+                        <li>Trained and deployed machine learning models in Python to predict booking trends, integrating them with the Node.js backend via REST APIs to enable real-time predictions with ~85% model accuracy.</li>
+                    </ul>
+                    <p class="tech-stack mt-2"><i class="bi bi-braces"></i> Tech stack: React, Node.js, Express.js, MongoDB, Python, Scikit-learn, Flask, HTML, CSS, Docker</p>
+                </div>
+            </div>
+
+            <h3 class="section-title text-gradient">Education</h3>
+            <div class="timeline">
+                <div class="tcard">
+                    <div class="tcard-header">
+                        <h4>Lovely Professional University</h4>
+                        <span class="date-badge">Aug '23 – Present</span>
+                    </div>
+                    <p>Bachelor of Technology - Computer Science and Engineering</p>
+                    <p class="mb-0 text-white">CGPA: <strong>6.81</strong></p>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-header">
+                        <h4>St. Antony’s Public School</h4>
+                        <span class="date-badge">Jun '20 – Apr '22</span>
+                    </div>
+                    <p>Intermediate</p>
+                    <p class="mb-0 text-white">Percentage: <strong>71.2%</strong></p>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-header">
+                        <h4>Sobhana Public School</h4>
+                        <span class="date-badge">Jun '19 – Apr '20</span>
+                    </div>
+                    <p>Matriculation</p>
+                    <p class="mb-0 text-white">Percentage: <strong>90.3%</strong></p>
+                </div>
+            </div>
+
+            <h3 class="section-title text-gradient">Certificates</h3>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="tcard h-100 mb-0 d-flex flex-column justify-content-between">
+                        <div>
+                            <h4 style="font-size: 1rem;">Microservices Architecture And Implementation</h4>
+                            <p class="mb-1 text-muted">IBM</p>
+                        </div>
+                        <span class="date-badge align-self-start mt-2">Oct '25</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tcard h-100 mb-0 d-flex flex-column justify-content-between">
+                        <div>
+                            <h4 style="font-size: 1rem;">Google Data Analytics Specialization</h4>
+                            <p class="mb-1 text-muted">Coursera</p>
+                        </div>
+                        <span class="date-badge align-self-start mt-2">Sep '25</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tcard h-100 mb-0 d-flex flex-column justify-content-between">
+                        <div>
+                            <h4 style="font-size: 1rem;">Responsive Web Design</h4>
+                            <p class="mb-1 text-muted">Free Code Camp</p>
+                        </div>
+                        <span class="date-badge align-self-start mt-2">Nov '23</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS SECTION -->
+<section id="skills" class="container">
+    <h2 class="section-title text-gradient text-center mb-5">Technical Arsenal</h2>
+    
+    <div class="row g-4">
+        <!-- Languages -->
+        <div class="col-md-6">
+            <div class="glass-panel h-100 text-center">
+                <i class="bi bi-code-slash skill-icon"></i>
+                <h4 class="mb-4">Languages</h4>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <span class="skill-pill">Python</span>
+                    <span class="skill-pill">C++</span>
+                    <span class="skill-pill">C</span>
+                    <span class="skill-pill">JavaScript</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Frameworks & Libraries -->
+        <div class="col-md-6">
+            <div class="glass-panel h-100 text-center">
+                <i class="bi bi-layers skill-icon"></i>
+                <h4 class="mb-4">Frameworks & Libraries</h4>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <span class="skill-pill">React</span>
+                    <span class="skill-pill">Node.js</span>
+                    <span class="skill-pill">Express.js</span>
+                    <span class="skill-pill">Flask</span>
+                    <span class="skill-pill">Pandas</span>
+                    <span class="skill-pill">NumPy</span>
+                    <span class="skill-pill">Scikit-learn</span>
+                    <span class="skill-pill">Mongoose</span>
+                    <span class="skill-pill">Bootstrap</span>
+                    <span class="skill-pill">Axios</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools & Platforms -->
+        <div class="col-md-6">
+            <div class="glass-panel h-100 text-center">
+                <i class="bi bi-tools skill-icon"></i>
+                <h4 class="mb-4">Tools & Platforms</h4>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <span class="skill-pill">MongoDB</span>
+                    <span class="skill-pill">MySQL</span>
+                    <span class="skill-pill">Docker</span>
+                    <span class="skill-pill">Kubernetes</span>
+                    <span class="skill-pill">Git</span>
+                    <span class="skill-pill">Power BI</span>
+                    <span class="skill-pill">Excel</span>
+                    <span class="skill-pill">HTML</span>
+                    <span class="skill-pill">CSS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="col-md-6">
+            <div class="glass-panel h-100 text-center">
+                <i class="bi bi-person-hearts skill-icon"></i>
+                <h4 class="mb-4">Soft Skills</h4>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <span class="skill-pill">Leadership</span>
+                    <span class="skill-pill">Communication</span>
+                    <span class="skill-pill">Teamwork</span>
+                    <span class="skill-pill">Adaptability</span>
+                    <span class="skill-pill">Problem-solving</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section id="projects" class="container">
+    <h2 class="section-title text-gradient text-center mb-5">Highlighted Projects</h2>
+
+    <div class="project-card">
+        <div class="project-header flex-wrap gap-2">
+            <div>
+                <h3 class="project-title">Roommate / PG Matching System</h3>
+                <span class="project-type">Full-Stack Web Application</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <span class="project-date">Jan '26 – Present</span>
+                <a href="https://github.com/devapriyaanil13" target="_blank" class="project-link"><i class="bi bi-github"></i></a>
+                <a href="#" class="project-link"><i class="bi bi-box-arrow-up-right"></i></a>
+            </div>
+        </div>
+        <ul class="project-desc">
+            <li>Designed and developed a full-stack roommate and PG matching platform, building 12+ responsive React components to enable user registration, profile creation, and filtered property search based on budget and location.</li>
+            <li>Developed 10+ RESTful APIs using Node.js and Express, structured MongoDB collections with Mongoose, and handled 400+ user and listing records with efficient CRUD operations.</li>
+            <li>Implemented JWT-based authentication, protected routes, and form validation to ensure secure user access and reliable data management across the application.</li>
+        </ul>
+        <p class="tech-stack mb-0"><i class="bi bi-braces"></i> Tech stack: React, Node.js, Express.js, MongoDB, Mongoose, HTML, CSS, Bootstrap, Javascript</p>
+    </div>
+
+    <div class="project-card">
+        <div class="project-header flex-wrap gap-2">
+            <div>
+                <h3 class="project-title">FilmNest</h3>
+                <span class="project-type">Movie Discovery Web App</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <span class="project-date">Nov '25 – Jan '26</span>
+                <a href="https://github.com/devapriyaanil13" target="_blank" class="project-link"><i class="bi bi-github"></i></a>
+                <a href="#" class="project-link"><i class="bi bi-box-arrow-up-right"></i></a>
+            </div>
+        </div>
+        <ul class="project-desc">
+            <li>Developed a full-stack movie discovery web application integrating multiple APIs to fetch real-time data on movies, ratings, and trending content, enhancing user experience with dynamic search.</li>
+            <li>Built a responsive and interactive UI using React, optimizing component structure and state management to reduce load time and ensure seamless navigation across devices.</li>
+            <li>Integrated and managed 3+ REST APIs with efficient error handling and data fetching, enabling users to explore a wide range of content with filtering based on genre, ratings, and popularity.</li>
+        </ul>
+        <p class="tech-stack mb-0"><i class="bi bi-braces"></i> Tech stack: React.js, JavaScript, REST APIs, CSS, Axios</p>
+    </div>
+
+    <div class="project-card">
+        <div class="project-header flex-wrap gap-2">
+            <div>
+                <h3 class="project-title">Kozhikode – City of Love</h3>
+                <span class="project-type">Tourism & Cultural Web Project</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <span class="project-date">May '25 – Jul '25</span>
+                <a href="https://github.com/devapriyaanil13" target="_blank" class="project-link"><i class="bi bi-github"></i></a>
+                <a href="#" class="project-link"><i class="bi bi-box-arrow-up-right"></i></a>
+            </div>
+        </div>
+        <ul class="project-desc">
+            <li>Designed and developed a responsive web application showcasing Kozhikode's cultural heritage, tourist attractions, and local cuisine, building 15+ interactive UI sections.</li>
+            <li>Implemented dynamic content rendering and structured data presentation to highlight key attractions, beaches, and historical landmarks, improving user navigation efficiency by 30%.</li>
+            <li>Optimized performance and mobile responsiveness to support 500+ simulated users, ensuring smooth browsing across devices.</li>
+        </ul>
+        <p class="tech-stack mb-0"><i class="bi bi-braces"></i> Tech stack: HTML, CSS, Bootstrap, Javascript</p>
+    </div>
+
+    <div class="project-card training-card mt-5">
+        <div class="project-header flex-wrap gap-2">
+            <div>
+                <h3 class="project-title">CPP with OOPs Programming Language</h3>
+                <span class="project-type">Training | Cipher Schools</span>
+            </div>
+            <span class="project-date">Jun '25 – Aug '25</span>
+        </div>
+        <ul class="project-desc mb-0">
+            <li>Applied core Object-Oriented Programming (OOP) principles in C++ including encapsulation, inheritance, polymorphism, and abstraction to develop modular and scalable applications.</li>
+            <li>Implemented file handling, exception handling, constructors/destructors, and utilized STL (Standard Template Library) for efficient data management and problem-solving.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="container">
+    <h2 class="section-title text-gradient text-center mb-5">Get In Touch</h2>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="contact-box">
+                <i class="bi bi-envelope-check contact-icon"></i>
+                <h4>Email</h4>
+                <a href="mailto:devapriyaanil373@gmail.com" class="contact-link">devapriyaanil373@gmail.com</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="contact-box">
+                <i class="bi bi-linkedin contact-icon"></i>
+                <h4>LinkedIn</h4>
+                <a href="https://www.linkedin.com/in/devapriya-anil/" target="_blank" class="contact-link">in/devapriya-anil</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="contact-box">
+                <i class="bi bi-telephone-fill contact-icon"></i>
+                <h4>Mobile</h4>
+                <a href="tel:+918301019520" class="contact-link">+91-8301019520</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="glass-panel text-center p-4 p-md-5">
+                <h3 class="mb-4 text-gradient">Send a Message</h3>
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control rounded-pill" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control rounded-pill" placeholder="Your Email" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" class="form-control rounded-pill" placeholder="Subject">
+                        </div>
+                        <div class="col-12">
+                            <textarea class="form-control rounded-4" rows="5" placeholder="Your Message" required style="resize: none;"></textarea>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-neon w-100">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer mt-5">
+    <div class="container text-center">
+        <p class="text-muted mb-3" style="font-size: 0.9rem;">Building Modern Web Experiences</p>
+        <div class="footer-social mb-3">
+            <a href="https://github.com/devapriyaanil13" target="_blank"><i class="bi bi-github"></i></a>
+            <a href="https://www.linkedin.com/in/devapriya-anil/" target="_blank"><i class="bi bi-linkedin"></i></a>
+            <a href="mailto:devapriyaanil373@gmail.com"><i class="bi bi-envelope-fill"></i></a>
+        </div>
+        <p class="text-muted mb-0" style="font-size: 0.8rem;">© 2026 Devapriya Anil — All Rights Reserved</p>
     </div>
 </footer>
 
-<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Optional: Add active class to nav links on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
